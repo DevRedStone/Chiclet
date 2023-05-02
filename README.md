@@ -46,7 +46,7 @@ ChicletOutlinedAnimatedButton(
 ## Button Types
 
 1. RoundedRectangle (default type):
-   - You can either not specifiy it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. In either case, the result will be the same. Example:
+   - You can either not specify it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. In either case, the result will be the same. Example:
    ```dart
    ChicletOutlinedAnimatedButton(
      onPressed: () {},
@@ -92,7 +92,7 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 
 ![Chiclet](/assets/example.jpg)
 
-## Costumizable Properties
+## Customizable Properties
 
 ChicletButton and ChicletAnimatedButton:
 
