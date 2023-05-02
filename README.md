@@ -18,6 +18,7 @@ Highly customizable island-style buttons known as Chiclet.
 This package provides you with highly customizable buttons known as Chiclet. Commonly seen in the language learning app Duolingo.
 
 ![Chiclet](/assets/intro.jpg)
+
 ## Getting started
 
 In the ```dependencies:``` section of your ```pubspec.yaml```, add the following line:
@@ -41,6 +42,7 @@ ChicletOutlinedAnimatedButton(
 ```
 
 ![Chiclet](/assets/ChicletButtonTypes.roundedRectangle.jpg)
+
 ## Button Types
 
 1. RoundedRectangle (default type):
@@ -86,7 +88,6 @@ ChicletOutlinedAnimatedButton(
    
    ![Chiclet](/assets/ChicletButtonTypes.oval.jpg)
    
-
 You can find more examples in the ```/example/lib/main.dart``` directory.
 
 ![Chiclet](/assets/example.jpg)
