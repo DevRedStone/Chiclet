@@ -29,7 +29,7 @@ dependencies:
 
 ## Usage
 
-1. Import Chiclet in your main.dart.
+1. Import `Chiclet` in your main.dart.
 ```dart
 import 'package:chiclet/chiclet.dart';
 ```
@@ -46,7 +46,7 @@ ChicletOutlinedAnimatedButton(
 ## Button Types
 
 1. RoundedRectangle (default type):
-   - You can either not specifiy it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. Either case result will be the same. Example:
+   - You can either not specifiy it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. In either case, the result will be the same. Example:
    ```dart
    ChicletOutlinedAnimatedButton(
      onPressed: () {},
