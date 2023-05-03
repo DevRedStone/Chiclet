@@ -131,4 +131,4 @@ ChicletOutlinedButton and ChicletOutlinedAnimatedButton:
 ## Additional information
 
 Suggestions, recommendations, bug reports, and issues:
-[DevRedStone](DevRedStone.github.io)
+[DevRedStone](https://github.com/DevRedStone/Chiclet)
