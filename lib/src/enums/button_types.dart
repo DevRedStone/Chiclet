@@ -1,4 +1,3 @@
-
 enum ButtonTypes {
   roundedRectangle,
   circle,
@@ -6,9 +5,9 @@ enum ButtonTypes {
 }
 
 class ChicletButtonTypes {
-
   static ButtonTypes get roundedRectangle => ButtonTypes.roundedRectangle;
-  static ButtonTypes get circle => ButtonTypes.circle;
-  static ButtonTypes get oval => ButtonTypes.oval;
 
+  static ButtonTypes get circle => ButtonTypes.circle;
+
+  static ButtonTypes get oval => ButtonTypes.oval;
 }
