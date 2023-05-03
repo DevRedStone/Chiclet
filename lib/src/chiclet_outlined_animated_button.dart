@@ -4,22 +4,65 @@ import 'enums/button_types.dart';
 import 'chiclet_outlined_button.dart';
 
 class ChicletOutlinedAnimatedButton extends StatefulWidget {
+  /// Typically the button's label.
   final Widget child;
+
+  /// Whether the button is currently pressed or not.
   final bool isPressed;
+
+  /// The width of the button.
+  ///
+  /// If not given, it will be the same as [height].
   final double? width;
+
+  /// The height of the button's surface.
   final double height;
+
+  /// The minimum size of the button itself.
   final Size? minimumSize;
+
+  /// The maximum size of the button itself.
   final Size? maximumSize;
+
+  /// The height of the button.
+  ///
+  /// It applies in addition to the [height].
   final double buttonHeight;
+
+  /// The width of the button's surface border.
   final double borderWidth;
+
+  /// The border radius of the button's corners.
   final double borderRadius;
+
+  /// The width of the border on the button's surface.
   final Color? borderColor;
+
+  /// The color of the button.
+  ///
+  /// If not given, it will be the same as [borderColor].
   final Color? buttonColor;
+
+  /// The color for the button's Text and Icon widget descendants.
+  ///
+  /// If not given, it will be the same as ThemeData's primarySwatch.
   final Color? foregroundColor;
+
+  /// The color of the button's surface.
   final Color? backgroundColor;
+
+  /// The shape of the button.
+  ///
+  /// The available options are: roundedRectangle (the default shape), circle, and oval.
   final ButtonTypes buttonType;
+
+  /// Called when the button is tapped or otherwise activated.
   final VoidCallback? onPressed;
+
+  /// The padding between the button's boundary and its child.
   final EdgeInsetsGeometry? padding;
+
+  /// Creates the InkWell splash factory, which defines the appearance of "ink" splashes that occur in response to taps.
   final InteractiveInkFeatureFactory? splashFactory;
 
   const ChicletOutlinedAnimatedButton(

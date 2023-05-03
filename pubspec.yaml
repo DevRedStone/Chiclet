@@ -1,6 +1,6 @@
 name: chiclet
-description: Highly customizable island-style buttons.
-version: 1.0.0
+description: With Chiclet, you can enjoy the convenience of highly customizable island-style buttons that are similar to those found in the popular language learning app Duolingo. These buttons can be tailored to your preferences, allowing you to fully personalize your experience.
+version: 1.0.1
 homepage: https://github.com/DevRedStone/Chiclet
 
 environment:
