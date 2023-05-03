@@ -17,7 +17,7 @@ Highly customizable island-style buttons known as Chiclet.
 
 This package provides you with highly customizable buttons known as Chiclet. Commonly seen in the language learning app Duolingo.
 
-![Chiclet](/assets/intro.jpg)
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/intro.jpg?raw=true)
 
 ## Getting started
 
@@ -41,7 +41,7 @@ ChicletOutlinedAnimatedButton(
 ),
 ```
 
-![Chiclet](/assets/ChicletButtonTypes.roundedRectangle.jpg)
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.roundedRectangle.jpg?raw=true)
 
 ## Button Types
 
@@ -61,7 +61,7 @@ ChicletOutlinedAnimatedButton(
    ),
    ```
    
-   ![Chiclet](/assets/ChicletButtonTypes.roundedRectangle.jpg)
+   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.roundedRectangle.jpg?raw=true)
    
 2. Circle:
    - You can create a circle shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
@@ -73,7 +73,7 @@ ChicletOutlinedAnimatedButton(
    ),
    ```
    
-   ![Chiclet](/assets/ChicletButtonTypes.circle.jpg)
+   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.circle.jpg?raw=true)
    
 3. Oval
    - You can create an oval shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
@@ -86,11 +86,11 @@ ChicletOutlinedAnimatedButton(
    ),
    ```
    
-   ![Chiclet](/assets/ChicletButtonTypes.oval.jpg)
+   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.oval.jpg?raw=true)
    
 You can find more examples in the ```/example/lib/main.dart``` directory.
 
-![Chiclet](/assets/example.jpg)
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/example.jpg?raw=true)
 
 ## Customizable Properties
 
