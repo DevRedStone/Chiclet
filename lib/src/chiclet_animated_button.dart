@@ -35,17 +35,15 @@ class ChicletAnimatedButton extends StatefulWidget {
       this.foregroundColor = Colors.white,
       this.backgroundColor,
       this.splashFactory = NoSplash.splashFactory,
-        this.buttonType = ButtonTypes.roundedRectangle,
+      this.buttonType = ButtonTypes.roundedRectangle,
       required this.child})
       : super(key: key);
 
   @override
-  State<ChicletAnimatedButton> createState() =>
-      _ChicletAnimatedButtonState();
+  State<ChicletAnimatedButton> createState() => _ChicletAnimatedButtonState();
 }
 
-class _ChicletAnimatedButtonState
-    extends State<ChicletAnimatedButton>
+class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
     with SingleTickerProviderStateMixin {
   bool _isPressed = false;
   static const Duration duration = Duration(milliseconds: 80);
