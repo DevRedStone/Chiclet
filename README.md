@@ -15,7 +15,7 @@ Highly customizable island-style buttons known as Chiclet.
 
 ## Features
 
-This package provides you with highly customizable buttons known as Chiclet. Commonly seen in the language learning app Duolingo.
+Chiclet provides you with highly customizable island-style buttons similar to those found in the popular language learning app Duolingo and Figma courses.
 
 ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/intro.jpg?raw=true)
 
@@ -122,7 +122,7 @@ ChicletOutlinedButton and ChicletOutlinedAnimatedButton:
 * borderWidth (default is 2),
 * borderRadius (default is 16),
 * borderColor (default is ```Colors.grey```),
-* buttonColor (default is ```Color.grey```),
+* buttonColor (default is ```Colors.grey```),
 * foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
 * backgroundColor (default is ```Colors.white```),
 * splashFactory (default is ```NoSplash.splashFactory```),

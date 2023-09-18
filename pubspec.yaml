@@ -1,6 +1,6 @@
 name: chiclet
-description: With Chiclet, you can enjoy the convenience of highly customizable island-style buttons that are similar to those found in the popular language learning app Duolingo.
-version: 1.0.1
+description: Chiclet provides you with highly customizable island-style buttons similar to those found in the popular language learning app Duolingo and Figma courses.
+version: 1.0.2
 homepage: https://github.com/DevRedStone/Chiclet
 
 environment:
@@ -16,6 +16,9 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
 
+screenshots:
+  - description: 'Thumbnail'
+    path: assets/thumbnail.png
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

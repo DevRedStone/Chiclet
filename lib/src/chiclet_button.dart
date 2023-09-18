@@ -107,7 +107,9 @@ class ChicletButton extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(0, 0, 0, (isPressed) ? 0 : buttonHeight),
       decoration: BoxDecoration(
           color: buttonColor ??
-              shadeColor(Theme.of(context).colorScheme.primary, 0.4),
+              (backgroundColor != null
+                  ? shadeColor(backgroundColor ?? Colors.black, 0.4)
+                  : shadeColor(Theme.of(context).colorScheme.primary, 0.4)),
           borderRadius: buttonType == ButtonTypes.oval
               ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
               : BorderRadius.circular(chicletBorderRadius)),

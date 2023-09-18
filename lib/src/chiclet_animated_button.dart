@@ -85,7 +85,7 @@ class ChicletAnimatedButton extends StatefulWidget {
 
 class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
     with SingleTickerProviderStateMixin {
-  bool _isPressed = false;
+  late bool _isPressed = false;
   static const Duration duration = Duration(milliseconds: 80);
 
   @override
@@ -95,17 +95,7 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
       child: ChicletButton(
-          onPressed: () {
-            setState(() {
-              _isPressed = true;
-            });
-            Future.delayed(duration, () {
-              setState(() {
-                _isPressed = false;
-              });
-              widget.onPressed!();
-            });
-          },
+          onPressed: _handleButtonPress,
           padding: widget.padding,
           width: widget.width,
           height: widget.height,
@@ -121,6 +111,18 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
           buttonType: widget.buttonType,
           child: widget.child),
     );
+  }
+
+  Future<void> _handleButtonPress() async {
+    setState(() {
+      _isPressed = true;
+    });
+    await Future.delayed(duration, () {
+      setState(() {
+        _isPressed = false;
+      });
+      widget.onPressed!();
+    });
   }
 
   void _onTapDown(TapDownDetails details) {
