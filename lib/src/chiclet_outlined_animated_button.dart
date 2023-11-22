@@ -67,7 +67,7 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
 
   const ChicletOutlinedAnimatedButton(
       {Key? key,
-      required this.onPressed,
+      this.onPressed,
       this.padding,
       this.width,
       this.height = 50,
@@ -132,7 +132,9 @@ class _ChicletOutlinedAnimatedButtonState
       setState(() {
         _isPressed = false;
       });
-      widget.onPressed!();
+      if (widget.onPressed != null) {
+        widget.onPressed!();
+      }
     });
   }
 
