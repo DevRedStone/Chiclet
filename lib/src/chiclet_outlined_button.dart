@@ -66,7 +66,7 @@ class ChicletOutlinedButton extends StatelessWidget {
 
   const ChicletOutlinedButton({
     Key? key,
-    required this.onPressed,
+    this.onPressed,
     this.padding,
     this.width,
     this.height = 50,
@@ -122,7 +122,6 @@ class ChicletOutlinedButton extends StatelessWidget {
             style: TextButton.styleFrom(
               padding: padding,
               splashFactory: splashFactory,
-              shadowColor: Colors.transparent,
               foregroundColor: foregroundColor,
               backgroundColor: backgroundColor,
               minimumSize: minimumSize,
@@ -132,6 +131,12 @@ class ChicletOutlinedButton extends StatelessWidget {
                     ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
                     : BorderRadius.circular(chicletBorderRadius - 2),
               ),
+            ).copyWith(
+              elevation: MaterialStateProperty.all(0),
+              overlayColor: MaterialStateProperty.all(
+                  splashFactory == NoSplash.splashFactory
+                      ? Colors.transparent
+                      : Theme.of(context).splashColor),
             ),
             child: child),
       ),
