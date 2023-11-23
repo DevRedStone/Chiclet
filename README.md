@@ -36,17 +36,25 @@ import 'package:chiclet/chiclet.dart';
 2. Basic implementation:
 ```dart
 ChicletOutlinedAnimatedButton(
-  onPressed: () {},
-  child: const Icon(Icons.download_rounded),
+onPressed: () {},
+child: const Icon(Icons.download_rounded),
 ),
 ```
 
 ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.roundedRectangle.jpg?raw=true)
 
+## Buttons List
+
+* ChicletButton
+* ChicletAnimatedButton
+* ChicletOutlinedButton
+* ChicletAnimatedOutlinedButton
+* ChicletSegmentedButton
+
 ## Button Types
 
-1. RoundedRectangle (default type):
-   - You can either not specify it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. In either case, the result will be the same. Example:
+### 1. RoundedRectangle (default type):
+- You can either not specify it, or write ```ChicletButtonTypes.roundedRectangle``` in front of the ```buttonType``` property. In either case, the result will be the same. Example:
    ```dart
    ChicletOutlinedAnimatedButton(
      onPressed: () {},
@@ -60,11 +68,11 @@ ChicletOutlinedAnimatedButton(
      child: const Icon(Icons.download_rounded),
    ),
    ```
-   
-   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.roundedRectangle.jpg?raw=true)
-   
-2. Circle:
-   - You can create a circle shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
+
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.roundedRectangle.jpg?raw=true)
+
+### 2. Circle:
+- You can create a circle shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
    ```dart
    ChicletOutlinedAnimatedButton(
      onPressed: () {},
@@ -72,11 +80,11 @@ ChicletOutlinedAnimatedButton(
      child: const Icon(Icons.download_rounded),
    ),
    ```
-   
-   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.circle.jpg?raw=true)
-   
-3. Oval
-   - You can create an oval shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
+
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.circle.jpg?raw=true)
+
+### 3. Oval:
+- You can create an oval shaped button by writing ```ChicletButtonTypes.circle``` in front of the ```buttonType``` property. Example:
    ```dart
    ChicletOutlinedAnimatedButton(
      onPressed: () {},
@@ -85,16 +93,16 @@ ChicletOutlinedAnimatedButton(
      child: const Icon(Icons.download_rounded),
    ),
    ```
-   
-   ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.oval.jpg?raw=true)
-   
+
+![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/ChicletButtonTypes.oval.jpg?raw=true)
+
 You can find more examples in the ```/example/lib/main.dart``` directory.
 
 ![Chiclet](https://github.com/DevRedStone/Chiclet/blob/master/assets/example.jpg?raw=true)
 
 ## Customizable Properties
 
-ChicletButton and ChicletAnimatedButton:
+### ChicletButton and ChicletAnimatedButton:
 
 * padding,
 * width (If not provided, it will be the same as `height`),
@@ -110,7 +118,7 @@ ChicletButton and ChicletAnimatedButton:
 * splashFactory (default is ```NoSplash.splashFactory```),
 * buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
 
-ChicletOutlinedButton and ChicletOutlinedAnimatedButton:
+### ChicletOutlinedButton and ChicletOutlinedAnimatedButton:
 
 * padding,
 * width (If not provided, it will be the same as `height`),
@@ -127,6 +135,34 @@ ChicletOutlinedButton and ChicletOutlinedAnimatedButton:
 * backgroundColor (default is ```Colors.white```),
 * splashFactory (default is ```NoSplash.splashFactory```),
 * buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
+
+### ChicletSegmentedButton:
+
+* padding
+* width
+* height
+* minimumSize,
+* maximumSize,
+* isPressed (default is false),
+* buttonHeight (default is 4, and it applies in addition to the ```height```),
+* borderRadius (default is 16),
+* buttonColor (default is ```Colors.grey```),
+* foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
+* backgroundColor (default is ```Colors.white```),
+* splashFactory (default is ```NoSplash.splashFactory```),
+* buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
+
+### ChicletButtonSegment (Intended to be only used as ChicletSegmentedButton's child):
+
+* padding
+* width
+* isPressed (default is false),
+* buttonColor (default is ```Colors.grey```),
+* foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
+* backgroundColor (default is ```Colors.white```),
+
+> [!NOTE]
+> When using Material 3, providing the ```primarySwatch``` doesn't affect the color properties. You should consider providing either ```colorScheme``` or ```ColorSchemeSeed```.
 
 ## Additional information
 
