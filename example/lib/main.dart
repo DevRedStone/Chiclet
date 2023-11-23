@@ -13,7 +13,8 @@ class Chiclet extends StatelessWidget {
     return MaterialApp(
       title: 'Chiclet',
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        colorSchemeSeed: Colors.cyan,
+        useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Chiclet'),
       debugShowCheckedModeBanner: false,
@@ -122,6 +123,44 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: 140,
                       buttonType: ChicletButtonTypes.oval,
                       child: const Icon(Icons.keyboard_return_rounded)),
+                ],
+              ),
+              ChicletSegmentedButton(
+                height: 66,
+                buttonHeight: 6,
+                padding: EdgeInsets.zero,
+                children: [
+                  ChicletButtonSegment(
+                    child: const Icon(Icons.shuffle_rounded),
+                  ),
+                  ChicletButtonSegment(
+                    child: const Icon(Icons.skip_previous_rounded),
+                  ),
+                  ChicletButtonSegment(
+                    child: const Icon(Icons.play_arrow),
+                  ),
+                  ChicletButtonSegment(
+                    child: const Icon(Icons.skip_next_rounded),
+                  ),
+                  ChicletButtonSegment(
+                    child: const Icon(Icons.repeat_rounded),
+                  ),
+                ],
+              ),
+              ChicletSegmentedButton(
+                width: 330,
+                height: 66,
+                buttonHeight: 6,
+                children: [
+                  Expanded(
+                    child: ChicletButtonSegment(
+                      child: const Text("Submit"),
+                    ),
+                  ),
+                  ChicletButtonSegment(
+                    padding: EdgeInsets.zero,
+                    child: const Icon(Icons.edit_rounded),
+                  ),
                 ],
               ),
             ],
