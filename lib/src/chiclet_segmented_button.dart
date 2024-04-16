@@ -49,6 +49,16 @@ class ChicletSegmentedButton<T> extends StatefulWidget {
   /// If not given, it will be the same as ThemeData's primarySwatch.
   final Color? backgroundColor;
 
+  /// The color for the disabled button's Text and Icon widget descendants.
+  ///
+  /// If not given, it will be Colors.grey.
+  final Color? disabledForegroundColor;
+
+  /// The color of the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.grey.shade300.
+  final Color? disabledBackgroundColor;
+
   /// The shape of the button.
   ///
   /// The available options are: roundedRectangle (the default shape), circle, and oval.
@@ -77,6 +87,8 @@ class ChicletSegmentedButton<T> extends StatefulWidget {
       this.buttonColor,
       this.foregroundColor,
       this.backgroundColor,
+      this.disabledForegroundColor,
+      this.disabledBackgroundColor,
       this.splashFactory = NoSplash.splashFactory,
       this.buttonType = ButtonTypes.roundedRectangle,
       required this.children})

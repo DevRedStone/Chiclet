@@ -49,6 +49,16 @@ class ChicletButtonSegment<T> extends StatefulWidget {
   /// If not given, it will be the same as ThemeData's primarySwatch.
   late Color? backgroundColor;
 
+  /// The color for the disabled button's Text and Icon widget descendants.
+  ///
+  /// If not given, it will be Colors.grey.
+  final Color? disabledForegroundColor;
+
+  /// The color of the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.grey.shade300.
+  final Color? disabledBackgroundColor;
+
   /// The shape of the button.
   ///
   /// The available options are: roundedRectangle (the default shape), circle, and oval.
@@ -80,6 +90,8 @@ class ChicletButtonSegment<T> extends StatefulWidget {
       this.buttonColor,
       this.foregroundColor = Colors.white,
       this.backgroundColor,
+      this.disabledBackgroundColor,
+      this.disabledForegroundColor,
       required this.child})
       : _height = height,
         _buttonHeight = buttonHeight = 4,
@@ -120,35 +132,37 @@ class ChicletButtonSegment<T> extends StatefulWidget {
   }
 
   @override
-  State<ChicletButtonSegment<T>> createState() =>
-      _ChicletAnimatedButtonState<T>();
+  State<ChicletButtonSegment<T>> createState() => _ChicletAnimatedButtonState<T>();
 }
 
-class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
-    with SingleTickerProviderStateMixin {
+class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>> with SingleTickerProviderStateMixin {
   late bool _isPressed = widget.isPressed;
   static const Duration duration = Duration(milliseconds: 80);
 
   @override
   Widget build(BuildContext context) {
+    final isDisabled = widget.onPressed == null;
+
     return GestureDetector(
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
       child: ChicletButton(
           buttonPosition: widget._buttonPosition,
-          onPressed: _handleButtonPress,
+          onPressed: !isDisabled ? _handleButtonPress : null,
           padding: widget.padding,
           width: widget.width,
           height: widget._height ?? 50,
           minimumSize: widget.minimumSize,
           maximumSize: widget.maximumSize,
-          isPressed: _isPressed,
+          isPressed: isDisabled ? true : _isPressed,
           buttonHeight: widget._buttonHeight,
           borderRadius: widget._borderRadius,
           buttonColor: widget.buttonColor,
           foregroundColor: widget.foregroundColor,
           backgroundColor: widget.backgroundColor,
+          disabledBackgroundColor: widget.disabledBackgroundColor,
+          disabledForegroundColor: widget.disabledForegroundColor,
           splashFactory: widget._splashFactory,
           buttonType: widget._buttonType,
           child: widget.child),

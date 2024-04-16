@@ -34,7 +34,7 @@ class ChicletOutlinedButton extends StatelessWidget {
   /// The border radius of the button's corners.
   final double borderRadius;
 
-  /// The width of the border on the button's surface.
+  /// The color of the border on the button's surface.
   final Color? borderColor;
 
   /// The color of the button.
@@ -49,6 +49,21 @@ class ChicletOutlinedButton extends StatelessWidget {
 
   /// The color of the button's surface.
   final Color? backgroundColor;
+
+  /// The color for the disabled button's Text and Icon widget descendants.
+  ///
+  /// If not given, it will be Colors.grey.
+  final Color? disabledForegroundColor;
+
+  /// The color of the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.white.
+  final Color? disabledBackgroundColor;
+
+  /// The color of the border on the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.grey.shade300.
+  final Color? disabledBorderColor;
 
   /// The shape of the button.
   ///
@@ -80,6 +95,9 @@ class ChicletOutlinedButton extends StatelessWidget {
     this.buttonColor,
     this.foregroundColor,
     this.backgroundColor = Colors.white,
+    this.disabledForegroundColor = Colors.grey,
+    this.disabledBackgroundColor = Colors.white,
+    this.disabledBorderColor,
     this.splashFactory = NoSplash.splashFactory,
     this.buttonType = ButtonTypes.roundedRectangle,
     required this.child,
@@ -87,6 +105,7 @@ class ChicletOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDisabled = onPressed == null;
     final double chicletWidth =
         buttonType == ButtonTypes.circle ? height : width ?? height;
     final double chicletBorderRadius =
@@ -99,11 +118,11 @@ class ChicletOutlinedButton extends StatelessWidget {
                 : borderRadius;
     return Container(
       width: chicletWidth,
-      height: (isPressed) ? height : height + buttonHeight,
-      margin: EdgeInsets.only(top: (isPressed) ? buttonHeight : 0),
-      padding: EdgeInsets.fromLTRB(0, 0, 0, (isPressed) ? 0 : buttonHeight),
+      height: (isPressed || isDisabled) ? height : height + buttonHeight,
+      margin: EdgeInsets.only(top: (isPressed || isDisabled) ? buttonHeight : 0),
+      padding: EdgeInsets.fromLTRB(0, 0, 0, (isPressed || isDisabled) ? 0 : buttonHeight),
       decoration: BoxDecoration(
-          color: buttonColor ?? borderColor,
+          color: isDisabled ? disabledBorderColor ?? Colors.grey.shade300 : buttonColor ?? borderColor,
           borderRadius: buttonType == ButtonTypes.oval
               ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
               : BorderRadius.circular(chicletBorderRadius)),
@@ -112,7 +131,7 @@ class ChicletOutlinedButton extends StatelessWidget {
         height: height,
         padding: EdgeInsets.all(borderWidth),
         decoration: BoxDecoration(
-          color: borderColor,
+          color: isDisabled ? disabledBorderColor ?? Colors.grey.shade300 : borderColor,
           borderRadius: buttonType == ButtonTypes.oval
               ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
               : BorderRadius.circular(chicletBorderRadius),
@@ -124,6 +143,8 @@ class ChicletOutlinedButton extends StatelessWidget {
               splashFactory: splashFactory,
               foregroundColor: foregroundColor,
               backgroundColor: backgroundColor,
+              disabledBackgroundColor: disabledBackgroundColor,
+              disabledForegroundColor: disabledForegroundColor,
               minimumSize: minimumSize,
               maximumSize: maximumSize,
               shape: RoundedRectangleBorder(
