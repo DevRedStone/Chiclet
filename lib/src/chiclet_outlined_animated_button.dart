@@ -94,7 +94,7 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
 class _ChicletOutlinedAnimatedButtonState
     extends State<ChicletOutlinedAnimatedButton>
     with SingleTickerProviderStateMixin {
-  late bool _isPressed = false;
+  late bool _isPressed = widget.isPressed;
   static const Duration duration = Duration(milliseconds: 80);
 
   @override
