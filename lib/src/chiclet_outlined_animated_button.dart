@@ -35,7 +35,7 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
   /// The border radius of the button's corners.
   final double borderRadius;
 
-  /// The width of the border on the button's surface.
+  /// The color of the border on the button's surface.
   final Color? borderColor;
 
   /// The color of the button.
@@ -50,6 +50,21 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
 
   /// The color of the button's surface.
   final Color? backgroundColor;
+
+  /// The color for the disabled button's Text and Icon widget descendants.
+  ///
+  /// If not given, it will be Colors.grey.
+  final Color? disabledForegroundColor;
+
+  /// The color of the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.grey.shade300.
+  final Color? disabledBackgroundColor;
+
+  /// The color of the border on the disabled button's surface.
+  ///
+  /// If not given, it will be Colors.grey.shade300.
+  final Color? disabledBorderColor;
 
   /// The shape of the button.
   ///
@@ -81,6 +96,9 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
       this.buttonColor,
       this.foregroundColor,
       this.backgroundColor = Colors.white,
+      this.disabledForegroundColor = Colors.grey,
+      this.disabledBackgroundColor,
+      this.disabledBorderColor,
       this.splashFactory = NoSplash.splashFactory,
       this.buttonType = ButtonTypes.roundedRectangle,
       required this.child})
@@ -94,23 +112,25 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
 class _ChicletOutlinedAnimatedButtonState
     extends State<ChicletOutlinedAnimatedButton>
     with SingleTickerProviderStateMixin {
-  late bool _isPressed = false;
+  late bool _isPressed = widget.isPressed;
   static const Duration duration = Duration(milliseconds: 80);
 
   @override
   Widget build(BuildContext context) {
+    bool isDisabled = widget.onPressed == null;
+
     return GestureDetector(
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
       child: ChicletOutlinedButton(
-          onPressed: _handleButtonPress,
+          onPressed: !isDisabled ? _handleButtonPress : null,
           padding: widget.padding,
           width: widget.width,
           height: widget.height,
           minimumSize: widget.minimumSize,
           maximumSize: widget.maximumSize,
-          isPressed: _isPressed,
+          isPressed: isDisabled ? true : _isPressed,
           buttonHeight: widget.buttonHeight,
           borderWidth: widget.borderWidth,
           borderRadius: widget.borderRadius,
@@ -118,6 +138,9 @@ class _ChicletOutlinedAnimatedButtonState
           buttonColor: widget.buttonColor,
           foregroundColor: widget.foregroundColor,
           backgroundColor: widget.backgroundColor,
+          disabledBackgroundColor: widget.disabledBackgroundColor,
+          disabledForegroundColor: widget.disabledForegroundColor,
+          disabledBorderColor: widget.disabledBorderColor,
           splashFactory: widget.splashFactory,
           buttonType: widget.buttonType,
           child: widget.child),
