@@ -1,6 +1,6 @@
 name: chiclet
 description: Chiclet provides you with highly customizable island-style buttons similar to those found in the popular language learning app Duolingo and Figma courses.
-version: 1.1.0
+version: 1.2.0
 homepage: https://github.com/DevRedStone/Chiclet
 
 environment:
