@@ -47,13 +47,9 @@ class ChicletAnimatedButton extends StatefulWidget {
   final Color? backgroundColor;
 
   /// The color for the disabled button's Text and Icon widget descendants.
-  ///
-  /// If not given, it will be Colors.grey.
   final Color? disabledForegroundColor;
 
   /// The color of the disabled button's surface.
-  ///
-  /// If not given, it will be Colors.grey.shade300.
   final Color? disabledBackgroundColor;
 
   /// The shape of the button.
@@ -84,7 +80,7 @@ class ChicletAnimatedButton extends StatefulWidget {
       this.buttonColor,
       this.foregroundColor = Colors.white,
       this.backgroundColor,
-      this.disabledForegroundColor = Colors.grey,
+      this.disabledForegroundColor,
       this.disabledBackgroundColor,
       this.splashFactory = NoSplash.splashFactory,
       this.buttonType = ButtonTypes.roundedRectangle,
@@ -121,8 +117,8 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
           buttonColor: widget.buttonColor,
           foregroundColor: widget.foregroundColor,
           backgroundColor: widget.backgroundColor,
-          disabledBackgroundColor: widget.disabledBackgroundColor,
           disabledForegroundColor: widget.disabledForegroundColor,
+          disabledBackgroundColor: widget.disabledBackgroundColor,
           splashFactory: widget.splashFactory,
           buttonType: widget.buttonType,
           child: widget.child),

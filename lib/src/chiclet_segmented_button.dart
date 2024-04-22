@@ -1,11 +1,10 @@
 library parent_class;
 
+import 'package:chiclet/chiclet.dart';
 import 'package:chiclet/src/chiclet_segmented_button_segment.dart';
 import 'package:chiclet/src/enums/button_group_positions.dart';
 import 'package:chiclet/src/enums/button_types.dart';
 import 'package:flutter/material.dart';
-
-import 'package:chiclet/chiclet.dart';
 
 class ChicletSegmentedButton<T> extends StatefulWidget {
   final List<Widget> _chicletButtonsList = [];
@@ -50,13 +49,9 @@ class ChicletSegmentedButton<T> extends StatefulWidget {
   final Color? backgroundColor;
 
   /// The color for the disabled button's Text and Icon widget descendants.
-  ///
-  /// If not given, it will be Colors.grey.
   final Color? disabledForegroundColor;
 
   /// The color of the disabled button's surface.
-  ///
-  /// If not given, it will be Colors.grey.shade300.
   final Color? disabledBackgroundColor;
 
   /// The shape of the button.
@@ -131,6 +126,8 @@ class ChicletSegmentedButton<T> extends StatefulWidget {
                   ? foregroundColor
                   : chicletButton.foregroundColor;
           chicletButton.backgroundColor ??= backgroundColor;
+          chicletButton.disabledForegroundColor ??= disabledForegroundColor;
+          chicletButton.disabledBackgroundColor ??= disabledBackgroundColor;
           chicletButton.splashFactory = splashFactory!;
           if (index != 0 && index != _chicletButtonsList.length - 1) {
             chicletButton.buttonPosition = ButtonPositions.between;
@@ -151,12 +148,10 @@ class _ChicletSegmentedButtonState<T> extends State<ChicletSegmentedButton<T>> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
-      height: widget.height + widget.buttonHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: widget.children,
-      ),
-    );
+        width: widget.width,
+        height: widget.height + widget.buttonHeight,
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: widget.children));
   }
 }
