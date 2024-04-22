@@ -1,3 +1,10 @@
+## 1.2.0
+
+* General improvements and bug fixes.
+* Rework ```ChicletOutlinedButton``` and ```ChicletOutlinedAnimatedButton``` buttons. (They now
+  use ```OutlinedButton``` instead of ```TextButton``` as their reference.)
+* Add disabled state support for all buttons.
+
 ## 1.1.0
 
 * General improvements and bug fixes.

@@ -115,6 +115,8 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 * buttonColor (default is ```shade.900``` of ```ThemeData```'s ```primarySwatch```, unless you provide the ```backgroundColor``` property, then it will be ```shade.900``` of the ```backgroundColor``` property),
 * foregroundColor (default is ```Colors.white```),
 * backgroundColor (default is ```ThemeData```'s ```primarySwatch```),
+* disabledforegroundColor,
+* disabledbackgroundColor,
 * splashFactory (default is ```NoSplash.splashFactory```),
 * buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
 
@@ -133,6 +135,9 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 * buttonColor (default is ```Colors.grey```),
 * foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
 * backgroundColor (default is ```Colors.white```),
+* disabledborderColor (default is ```Theme.colorScheme.onSurface(0.12)```),
+* disabledforegroundColor,
+* disabledbackgroundColor,
 * splashFactory (default is ```NoSplash.splashFactory```),
 * buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
 
@@ -149,10 +154,12 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 * buttonColor (default is ```Colors.grey```),
 * foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
 * backgroundColor (default is ```Colors.white```),
+* disabledforegroundColor,
+* disabledbackgroundColor,
 * splashFactory (default is ```NoSplash.splashFactory```),
 * buttonType (default is ```ChicletButtonTypes.roundedRectangle```),
 
-### ChicletButtonSegment (Intended to be only used as ChicletSegmentedButton's child):
+### ChicletButtonSegment (Intended to be used only as ChicletSegmentedButton's child):
 
 * padding
 * width
@@ -160,6 +167,8 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 * buttonColor (default is ```Colors.grey```),
 * foregroundColor (default is ```ThemeData```'s ```primarySwatch```),
 * backgroundColor (default is ```Colors.white```),
+* disabledforegroundColor,
+* disabledbackgroundColor,
 
 > [!NOTE]
 > When using Material 3, providing the ```primarySwatch``` doesn't affect the color properties. You should consider providing either ```colorScheme``` or ```ColorSchemeSeed```.
