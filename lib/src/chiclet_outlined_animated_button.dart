@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'enums/button_types.dart';
 import 'chiclet_outlined_button.dart';
+import 'enums/button_types.dart';
 
 class ChicletOutlinedAnimatedButton extends StatefulWidget {
   /// Typically the button's label.
@@ -52,18 +52,14 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
   final Color? backgroundColor;
 
   /// The color for the disabled button's Text and Icon widget descendants.
-  ///
-  /// If not given, it will be Colors.grey.
   final Color? disabledForegroundColor;
 
   /// The color of the disabled button's surface.
-  ///
-  /// If not given, it will be Colors.grey.shade300.
   final Color? disabledBackgroundColor;
 
   /// The color of the border on the disabled button's surface.
   ///
-  /// If not given, it will be Colors.grey.shade300.
+  /// If not given, it will be Theme.colorScheme.onSurface(0.12).
   final Color? disabledBorderColor;
 
   /// The shape of the button.
@@ -96,7 +92,7 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
       this.buttonColor,
       this.foregroundColor,
       this.backgroundColor = Colors.white,
-      this.disabledForegroundColor = Colors.grey,
+      this.disabledForegroundColor,
       this.disabledBackgroundColor,
       this.disabledBorderColor,
       this.splashFactory = NoSplash.splashFactory,
