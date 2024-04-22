@@ -169,14 +169,14 @@ class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
   Future<void> _handleButtonPress() async {
     setState(() {
       _isPressed = true;
+      if (widget.onPressed != null) {
+        widget.onPressed!();
+      }
     });
     await Future.delayed(duration, () {
       setState(() {
         _isPressed = false;
       });
-      if (widget.onPressed != null) {
-        widget.onPressed!();
-      }
     });
   }
 
