@@ -173,6 +173,16 @@ You can find more examples in the ```/example/lib/main.dart``` directory.
 > [!NOTE]
 > When using Material 3, providing the ```primarySwatch``` doesn't affect the color properties. You should consider providing either ```colorScheme``` or ```ColorSchemeSeed```.
 
+## Support the Project
+
+If you find this project useful and would like to support its development, you can donate using the following cryptocurrencies. We work on this project in our spare time alongside our full-time jobs, and even a small donation — as little as $1 — goes a long way in Iran and helps us dedicate more time to improving and maintaining it.
+
+* BTC (Bitcoin): bc1qkxcvlvkrslx33g2kql45au438ua3qrvanangw2 
+* ETH (Ethereum): 0x575ef94aea4aa5bdf5c74c6b47311768118ad7c7
+* TRX (Tron): TRXMXafCkQ1sND7f9rfUNVDWazR866GHwF
+* USDT (Tron): TRXMXafCkQ1sND7f9rfUNVDWazR866GHwF
+* Toncoin (Ton): UQBcgZhcrJ-Qd-MUol1SvCLSqZCWZ01efrJJh4SUsoBpGtJw
+
 ## Additional information
 
 Suggestions, recommendations, bug reports, and issues:
