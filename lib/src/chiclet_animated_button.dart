@@ -102,7 +102,6 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
 
     return GestureDetector(
       onTapDown: _onTapDown,
-      onTapUp: _onTapUp,
       onTapCancel: _onTapCancel,
       child: ChicletButton(
           onPressed: !isDisabled ? _handleButtonPress : null,
@@ -111,7 +110,7 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
           height: widget.height,
           minimumSize: widget.minimumSize,
           maximumSize: widget.maximumSize,
-          isPressed: isDisabled ? true : _isPressed,
+          isPressed: isDisabled || widget.isPressed ? true : _isPressed,
           buttonHeight: widget.buttonHeight,
           borderRadius: widget.borderRadius,
           buttonColor: widget.buttonColor,
@@ -132,22 +131,15 @@ class _ChicletAnimatedButtonState extends State<ChicletAnimatedButton>
         widget.onPressed!();
       }
     });
-    await Future.delayed(duration, () {
-      setState(() {
-        _isPressed = false;
-      });
-    });
+    await Future.delayed(duration);
+    if (mounted && _isPressed) {
+      setState(() => _isPressed = false);
+    }
   }
 
   void _onTapDown(TapDownDetails details) {
     setState(() {
       _isPressed = true;
-    });
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() {
-      _isPressed = false;
     });
   }
 

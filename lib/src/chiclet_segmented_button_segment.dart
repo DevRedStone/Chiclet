@@ -97,32 +97,26 @@ class ChicletButtonSegment<T> extends StatefulWidget {
         _splashFactory = splashFactory = NoSplash.splashFactory,
         super(key: key);
 
-  @protected
   set height(double height) {
     _height = height;
   }
 
-  @protected
   set buttonHeight(double buttonHeight) {
     _buttonHeight = buttonHeight;
   }
 
-  @protected
   set borderRadius(double borderRadius) {
     _borderRadius = borderRadius;
   }
 
-  @protected
   set buttonType(ButtonTypes buttonType) {
     _buttonType = buttonType;
   }
 
-  @protected
   set buttonPosition(ButtonPositions buttonPosition) {
     _buttonPosition = buttonPosition;
   }
 
-  @protected
   set splashFactory(InteractiveInkFeatureFactory splashFactory) {
     _splashFactory = splashFactory;
   }
@@ -143,7 +137,6 @@ class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
 
     return GestureDetector(
         onTapDown: _onTapDown,
-        onTapUp: _onTapUp,
         onTapCancel: _onTapCancel,
         child: ChicletButton(
             buttonPosition: widget._buttonPosition,
@@ -153,7 +146,7 @@ class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
             height: widget._height ?? 50,
             minimumSize: widget.minimumSize,
             maximumSize: widget.maximumSize,
-            isPressed: isDisabled ? true : _isPressed,
+            isPressed: isDisabled || widget.isPressed ? true : _isPressed,
             buttonHeight: widget._buttonHeight,
             borderRadius: widget._borderRadius,
             buttonColor: widget.buttonColor,
@@ -173,22 +166,15 @@ class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
         widget.onPressed!();
       }
     });
-    await Future.delayed(duration, () {
-      setState(() {
-        _isPressed = false;
-      });
-    });
+    await Future.delayed(duration);
+    if (mounted && _isPressed) {
+      setState(() => _isPressed = false);
+    }
   }
 
   void _onTapDown(TapDownDetails details) {
     setState(() {
       _isPressed = true;
-    });
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() {
-      _isPressed = false;
     });
   }
 

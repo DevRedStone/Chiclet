@@ -1,3 +1,10 @@
+## 1.2.1
+
+* General improvements and bug fixes.
+* Enhanced tap feedback and animation timing.
+* Button `isPressed` property now works dynamically throughout widget lifecycle instead of only at creation time.
+
+
 ## 1.2.0
 
 * General improvements and bug fixes.

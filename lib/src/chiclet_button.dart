@@ -70,83 +70,75 @@ class ChicletButton extends StatelessWidget {
   /// Creates the InkWell splash factory, which defines the appearance of "ink" splashes that occur in response to taps.
   final InteractiveInkFeatureFactory? splashFactory;
 
-  const ChicletButton(
-      {Key? key,
-      ButtonPositions? buttonPosition,
-      this.onPressed,
-      this.padding,
-      this.width,
-      this.height = 50,
-      this.minimumSize,
-      this.maximumSize,
-      this.isPressed = false,
-      this.buttonHeight = 4,
-      this.borderRadius = 16,
-      this.buttonColor,
-      this.foregroundColor = Colors.white,
-      this.backgroundColor,
-      this.disabledForegroundColor,
-      this.disabledBackgroundColor,
-      this.splashFactory = NoSplash.splashFactory,
-      this.buttonType = ButtonTypes.roundedRectangle,
-      required this.child})
+  const ChicletButton({Key? key,
+    ButtonPositions? buttonPosition,
+    this.onPressed,
+    this.padding,
+    this.width,
+    this.height = 50,
+    this.minimumSize,
+    this.maximumSize,
+    this.isPressed = false,
+    this.buttonHeight = 4,
+    this.borderRadius = 16,
+    this.buttonColor,
+    this.foregroundColor = Colors.white,
+    this.backgroundColor,
+    this.disabledForegroundColor,
+    this.disabledBackgroundColor,
+    this.splashFactory = NoSplash.splashFactory,
+    this.buttonType = ButtonTypes.roundedRectangle,
+    required this.child})
       : _buttonPosition = buttonPosition,
         super(key: key);
 
   int shadeValue(int value, double factor) =>
       max(0, min(value - (value * factor).round(), 255));
 
-  Color shadeColor(Color color, double factor) => Color.fromRGBO(
-      shadeValue(color.red, factor),
-      shadeValue(color.green, factor),
-      shadeValue(color.blue, factor),
-      1);
+  Color shadeColor(Color color, double factor) =>
+      Color.fromRGBO(
+          shadeValue((color.r * 255.0).round() & 0xff, factor),
+          shadeValue((color.g * 255.0).round() & 0xff, factor),
+          shadeValue((color.b * 255.0).round() & 0xff, factor),
+          1);
 
   @override
   Widget build(BuildContext context) {
     final isDisabled = onPressed == null;
     final double chicletWidth =
-        buttonType == ButtonTypes.circle ? height : width ?? height;
+    buttonType == ButtonTypes.circle ? height : width ?? height;
     final double chicletBorderRadius =
-        buttonType == ButtonTypes.roundedRectangle
-            ? borderRadius > height / 2
-                ? height / 2
-                : borderRadius
-            : buttonType == ButtonTypes.circle
-                ? height
-                : borderRadius;
-    final RoundedRectangleBorder chicletShape = RoundedRectangleBorder(
-        borderRadius: (_buttonPosition == null)
-            ? buttonType == ButtonTypes.oval
-                ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
-                : BorderRadius.circular(
-                    buttonType == ButtonTypes.roundedRectangle
-                        ? borderRadius - 2
-                        : chicletBorderRadius - 2)
-            : (_buttonPosition! == ButtonPositions.start)
-                ? buttonType == ButtonTypes.oval
-                    ? BorderRadius.horizontal(
-                        left: Radius.elliptical(chicletWidth * 2, height))
-                    : BorderRadius.horizontal(
-                        left: Radius.circular(
-                            buttonType == ButtonTypes.roundedRectangle
-                                ? borderRadius - 2
-                                : chicletBorderRadius - 2))
-                : (_buttonPosition! == ButtonPositions.between)
-                    ? BorderRadius.zero
-                    : buttonType == ButtonTypes.oval
-                        ? BorderRadius.horizontal(
-                            right: Radius.elliptical(chicletWidth * 2, height))
-                        : BorderRadius.horizontal(
-                            right: Radius.circular(
-                                buttonType == ButtonTypes.roundedRectangle
-                                    ? borderRadius - 2
-                                    : chicletBorderRadius - 2)));
+    buttonType == ButtonTypes.roundedRectangle
+        ? borderRadius > height / 2
+        ? height / 2
+        : borderRadius
+        : buttonType == ButtonTypes.circle
+        ? height
+        : borderRadius;
+    final OutlinedBorder chicletShape = buttonType != ButtonTypes.circle
+        ? RoundedRectangleBorder(
+      borderRadius: (_buttonPosition == null)
+          ? buttonType != ButtonTypes.oval
+          ? BorderRadius.circular(borderRadius - 2)
+          : BorderRadius.all(Radius.elliptical(chicletWidth, height))
+          : (_buttonPosition == ButtonPositions.start)
+          ? BorderRadius.horizontal(
+          left: buttonType != ButtonTypes.oval
+              ? Radius.circular(borderRadius - 2)
+              : Radius.elliptical(chicletWidth * 2, height))
+          : (_buttonPosition == ButtonPositions.between)
+          ? BorderRadius.zero
+          : BorderRadius.horizontal(
+          right: buttonType != ButtonTypes.oval
+              ? Radius.circular(borderRadius - 2)
+              : Radius.elliptical(chicletWidth * 2, height)),
+    )
+        : const CircleBorder(eccentricity: 0);
     return Container(
         width: chicletWidth,
         height: (isPressed || isDisabled) ? height : height + buttonHeight,
         margin:
-            EdgeInsets.only(top: (isPressed || isDisabled) ? buttonHeight : 0),
+        EdgeInsets.only(top: (isPressed || isDisabled) ? buttonHeight : 0),
         padding: EdgeInsets.fromLTRB(
           (_buttonPosition != null && _buttonPosition != ButtonPositions.start)
               ? 1
@@ -158,73 +150,79 @@ class ChicletButton extends StatelessWidget {
           isPressed || isDisabled ? 0 : buttonHeight,
         ),
         decoration: BoxDecoration(
-            color: buttonColor ??
-                (backgroundColor != null
-                    ? shadeColor(backgroundColor ?? Colors.black, 0.4)
-                    : isDisabled
-                        ? null
-                        : shadeColor(
-                            Theme.of(context).colorScheme.primary, 0.4)),
-            borderRadius: (_buttonPosition == null)
-                ? buttonType == ButtonTypes.oval
-                    ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
-                    : BorderRadius.circular(chicletBorderRadius)
-                : (_buttonPosition! == ButtonPositions.start)
-                    ? buttonType == ButtonTypes.oval
-                        ? BorderRadius.horizontal(
-                            left: Radius.elliptical(chicletWidth * 2, height))
-                        : BorderRadius.horizontal(
-                            left: Radius.circular(chicletBorderRadius))
-                    : (_buttonPosition! == ButtonPositions.between)
-                        ? BorderRadius.zero
-                        : buttonType == ButtonTypes.oval
-                            ? BorderRadius.horizontal(
-                                right:
-                                    Radius.elliptical(chicletWidth * 2, height))
-                            : BorderRadius.horizontal(
-                                right: Radius.circular(chicletBorderRadius))),
-        child: Theme.of(context).useMaterial3 == true
+          color: buttonColor ??
+              (backgroundColor != null
+                  ? shadeColor(backgroundColor ?? Colors.black, 0.4)
+                  : isDisabled
+                  ? null
+                  : shadeColor(Theme
+                  .of(context)
+                  .colorScheme
+                  .primary, 0.4)),
+          borderRadius: (_buttonPosition == null)
+              ? buttonType != ButtonTypes.oval
+              ? BorderRadius.circular(chicletBorderRadius)
+              : BorderRadius.all(Radius.elliptical(chicletWidth, height))
+              : (_buttonPosition == ButtonPositions.start)
+              ? BorderRadius.horizontal(
+              left: buttonType != ButtonTypes.oval
+                  ? Radius.circular(borderRadius - 2)
+                  : Radius.elliptical(chicletWidth * 2, height))
+              : (_buttonPosition == ButtonPositions.between)
+              ? BorderRadius.zero
+              : BorderRadius.horizontal(
+              right: buttonType != ButtonTypes.oval
+                  ? Radius.circular(borderRadius - 2)
+                  : Radius.elliptical(chicletWidth * 2, height)),
+        ),
+        child: Theme
+            .of(context)
+            .useMaterial3 == true
             ? FilledButton(
-                onPressed: onPressed,
-                style: FilledButton.styleFrom(
-                  shape: chicletShape,
-                  minimumSize: minimumSize,
-                  maximumSize: maximumSize,
-                  splashFactory: splashFactory,
-                  foregroundColor: foregroundColor,
-                  backgroundColor: backgroundColor,
-                  disabledForegroundColor: disabledForegroundColor,
-                  disabledBackgroundColor: disabledBackgroundColor,
-                  padding: (padding != null)
-                      ? const EdgeInsets.all(0).add(padding!)
-                      : const EdgeInsets.all(0),
-                ).copyWith(
-                    elevation: MaterialStateProperty.all(0),
-                    overlayColor: MaterialStateProperty.all(
-                        splashFactory == NoSplash.splashFactory
-                            ? Colors.transparent
-                            : Theme.of(context).splashColor)),
-                child: child)
+            onPressed: onPressed,
+            style: FilledButton.styleFrom(
+              shape: chicletShape,
+              minimumSize: minimumSize,
+              maximumSize: maximumSize,
+              splashFactory: splashFactory,
+              foregroundColor: foregroundColor,
+              backgroundColor: backgroundColor,
+              disabledForegroundColor: disabledForegroundColor,
+              disabledBackgroundColor: disabledBackgroundColor,
+              padding: (padding != null)
+                  ? const EdgeInsets.all(0).add(padding!)
+                  : const EdgeInsets.all(0),
+            ).copyWith(
+                elevation: WidgetStateProperty.all(0),
+                overlayColor: WidgetStateProperty.all(
+                    splashFactory == NoSplash.splashFactory
+                        ? Colors.transparent
+                        : Theme
+                        .of(context)
+                        .splashColor)),
+            child: child)
             : ElevatedButton(
-                onPressed: onPressed,
-                style: ElevatedButton.styleFrom(
-                        shape: chicletShape,
-                        minimumSize: minimumSize,
-                        maximumSize: maximumSize,
-                        splashFactory: splashFactory,
-                        foregroundColor: foregroundColor,
-                        backgroundColor: backgroundColor,
-                        disabledForegroundColor: disabledForegroundColor,
-                        disabledBackgroundColor: disabledBackgroundColor,
-                        padding: (padding != null)
-                            ? const EdgeInsets.all(0).add(padding!)
-                            : const EdgeInsets.all(0))
-                    .copyWith(
-                        elevation: MaterialStateProperty.all(0),
-                        overlayColor: MaterialStateProperty.all(
-                            splashFactory == NoSplash.splashFactory
-                                ? Colors.transparent
-                                : Theme.of(context).splashColor)),
-                child: child));
+            onPressed: onPressed,
+            style: ElevatedButton.styleFrom(
+                shape: chicletShape,
+                minimumSize: minimumSize,
+                maximumSize: maximumSize,
+                splashFactory: splashFactory,
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor,
+                disabledForegroundColor: disabledForegroundColor,
+                disabledBackgroundColor: disabledBackgroundColor,
+                padding: (padding != null)
+                    ? const EdgeInsets.all(0).add(padding!)
+                    : const EdgeInsets.all(0))
+                .copyWith(
+                elevation: WidgetStateProperty.all(0),
+                overlayColor: WidgetStateProperty.all(
+                    splashFactory == NoSplash.splashFactory
+                        ? Colors.transparent
+                        : Theme
+                        .of(context)
+                        .splashColor)),
+            child: child));
   }
 }

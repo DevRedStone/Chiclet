@@ -13,7 +13,7 @@ class Chiclet extends StatelessWidget {
     return MaterialApp(
       title: 'Chiclet',
       theme: ThemeData(
-        colorSchemeSeed: Colors.red,
+        colorSchemeSeed: Colors.purple,
         useMaterial3: false,
       ),
       home: const MyHomePage(title: 'Chiclet'),

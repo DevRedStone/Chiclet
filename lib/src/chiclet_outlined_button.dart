@@ -119,7 +119,7 @@ class ChicletOutlinedButton extends StatelessWidget {
           .outlinedButtonTheme
           .style
           ?.side
-          ?.resolve(<MaterialState>{})?.color;
+          ?.resolve(<WidgetState>{})?.color;
       outlinedButtonThemeColor = (outlinedButtonThemeColor != Colors.black)
           ? outlinedButtonThemeColor
           : Colors.grey;
@@ -127,7 +127,7 @@ class ChicletOutlinedButton extends StatelessWidget {
           .outlinedButtonTheme
           .style
           ?.side
-          ?.resolve(<MaterialState>{})?.width;
+          ?.resolve(<WidgetState>{})?.width;
       outlinedButtonThemeWidth =
           (outlinedButtonThemeWidth != 1) ? outlinedButtonThemeWidth : 2;
     } else {
@@ -135,7 +135,7 @@ class ChicletOutlinedButton extends StatelessWidget {
       outlinedButtonThemeWidth = 2;
     }
     final Color defaultDisabledBorderColor =
-        Theme.of(context).colorScheme.onSurface.withOpacity(0.12);
+        Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.12);
     return Container(
       width: chicletWidth,
       height: (isPressed || isDisabled) ? height : height + buttonHeight,
@@ -144,16 +144,17 @@ class ChicletOutlinedButton extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(
           0, 0, 0, (isPressed || isDisabled) ? 0 : buttonHeight),
       decoration: BoxDecoration(
-          color: isDisabled
-              ? disabledBorderColor ?? defaultDisabledBorderColor
-              : (buttonColor != null)
-                  ? buttonColor
-                  : (borderColor != Colors.grey)
-                      ? borderColor ?? Colors.grey
-                      : outlinedButtonThemeColor ?? Colors.grey,
-          borderRadius: buttonType == ButtonTypes.oval
-              ? BorderRadius.all(Radius.elliptical(chicletWidth, height))
-              : BorderRadius.circular(chicletBorderRadius)),
+        color: isDisabled
+            ? disabledBorderColor ?? defaultDisabledBorderColor
+            : (buttonColor != null)
+                ? buttonColor
+                : (borderColor != Colors.grey)
+                    ? borderColor ?? Colors.grey
+                    : outlinedButtonThemeColor ?? Colors.grey,
+        borderRadius: buttonType != ButtonTypes.oval
+            ? BorderRadius.circular(chicletBorderRadius)
+            : BorderRadius.all(Radius.elliptical(chicletWidth, height)),
+      ),
       child: Padding(
         padding: (borderWidth != 2)
             ? EdgeInsets.all(borderWidth)
@@ -172,28 +173,28 @@ class ChicletOutlinedButton extends StatelessWidget {
               padding: (padding != null)
                   ? const EdgeInsets.all(0).add(padding!)
                   : const EdgeInsets.all(0),
-              shape: RoundedRectangleBorder(
-                  borderRadius: buttonType == ButtonTypes.oval
-                      ? BorderRadius.all(
-                          Radius.elliptical(chicletWidth, height))
-                      : BorderRadius.circular(
-                          buttonType == ButtonTypes.roundedRectangle
-                              ? isDisabled
-                                  ? (borderRadius != 0)
-                                      ? borderRadius -
-                                          (outlinedButtonThemeWidth! - 2) -
-                                          2
-                                      : 0
-                                  : borderRadius - (borderWidth - 2) - 2
-                              : chicletBorderRadius - 2)),
+              shape: buttonType != ButtonTypes.circle
+                  ? RoundedRectangleBorder(
+                      borderRadius: buttonType != ButtonTypes.oval
+                          ? BorderRadius.circular(isDisabled
+                              ? (borderRadius != 0)
+                                  ? borderRadius -
+                                      (outlinedButtonThemeWidth! - 2) -
+                                      2
+                                  : 0
+                              : borderRadius - (borderWidth - 2) - 2)
+                          : BorderRadius.all(
+                              Radius.elliptical(chicletWidth, height)),
+                    )
+                  : const CircleBorder(eccentricity: 0),
             ).copyWith(
-              elevation: MaterialStateProperty.all(0),
-              overlayColor: MaterialStateProperty.all(
+              elevation: WidgetStateProperty.all(0),
+              overlayColor: WidgetStateProperty.all(
                   splashFactory == NoSplash.splashFactory
                       ? Colors.transparent
                       : Theme.of(context).splashColor),
-              side: MaterialStateProperty.resolveWith<BorderSide>(
-                (Set<MaterialState> states) {
+              side: WidgetStateProperty.resolveWith<BorderSide>(
+                (Set<WidgetState> states) {
                   return BorderSide(
                     style: BorderStyle.solid,
                     width: (borderWidth != 2)

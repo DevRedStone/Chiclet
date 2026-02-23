@@ -1,11 +1,11 @@
 name: chiclet
 description: Chiclet provides you with highly customizable island-style buttons similar to those found in the popular language learning app Duolingo and Figma courses.
-version: 1.2.0
+version: 1.2.1
 homepage: https://github.com/DevRedStone/Chiclet
 
 environment:
-  sdk: '>=2.19.6 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: ^3.9.0
+#  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^6.0.0
 
 screenshots:
   - description: 'pub.dev thumbnail'
@@ -40,7 +40,7 @@ flutter:
 # in this "flutter" section. Each entry in this list should have a
 # "family" key with the font family name, and a "fonts" key with a
 # list giving the asset and other descriptors for the font. For
-# example:
+# example-old-1:
 # fonts:
 #   - family: Schyler
 #     fonts:

@@ -1,5 +1,3 @@
-library parent_class;
-
 import 'package:chiclet/chiclet.dart';
 import 'package:chiclet/src/chiclet_segmented_button_segment.dart';
 import 'package:chiclet/src/enums/button_group_positions.dart';
