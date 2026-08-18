@@ -60,6 +60,9 @@ class ChicletButtonSegment<T> extends StatefulWidget {
   /// The available options are: roundedRectangle (the default shape), circle, and oval.
   late ButtonTypes _buttonType;
 
+  /// Called when the button is pressed down (but not let go)
+  final VoidCallback? onPressDown;
+
   /// Called when the button is tapped or otherwise activated.
   final VoidCallback? onPressed;
 
@@ -77,6 +80,7 @@ class ChicletButtonSegment<T> extends StatefulWidget {
       ButtonTypes? buttonType,
       ButtonPositions? buttonPosition,
       InteractiveInkFeatureFactory? splashFactory,
+      this.onPressDown,
       this.onPressed,
       this.padding,
       this.width,
@@ -175,6 +179,7 @@ class _ChicletAnimatedButtonState<T> extends State<ChicletButtonSegment<T>>
   void _onTapDown(TapDownDetails details) {
     setState(() {
       _isPressed = true;
+      widget.onPressDown?.call();
     });
   }
 
