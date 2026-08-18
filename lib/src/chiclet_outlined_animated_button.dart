@@ -67,6 +67,9 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
   /// The available options are: roundedRectangle (the default shape), circle, and oval.
   final ButtonTypes buttonType;
 
+  /// Called when the button is pressed down (but not let go)
+  final VoidCallback? onPressDown;
+
   /// Called when the button is tapped or otherwise activated.
   final VoidCallback? onPressed;
 
@@ -78,6 +81,7 @@ class ChicletOutlinedAnimatedButton extends StatefulWidget {
 
   const ChicletOutlinedAnimatedButton(
       {Key? key,
+      this.onPressDown,
       this.onPressed,
       this.padding,
       this.width,
@@ -158,6 +162,7 @@ class _ChicletOutlinedAnimatedButtonState
   void _onTapDown(TapDownDetails details) {
     setState(() {
       _isPressed = true;
+      widget.onPressDown?.call();
     });
   }
 
